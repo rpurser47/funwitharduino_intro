@@ -9,13 +9,13 @@
  * LCD R/W pin to ground
  * 10K resistor:
  * ends to +5V and ground
- * wiper to LCD VO pin (pin 3)
+ * potentiometer to LCD VO pin (pin 3)
 
 Fun with Arduino by Rob Purser is licensed under a
 Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
-Based on a work at http://goo.gl/NNe35. 
-Copyright Rob Purser, 2013
+Based on a work at https://sites.google.com/site/funarduino/
+Copyright Rob Purser, 2013-2014
 
 */
 
@@ -29,14 +29,43 @@ void setup() {
   // set up the LCD's number of columns and rows: 
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("hello, world!");
+  lcd.print("Raw:");
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 1);
+  lcd.print("Temp:");
+  
+  Serial.begin(9600);
 }
 
 void loop() {
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
-  // print the number of seconds since reset:
-  lcd.print(millis()/1000);
+  int reading = analogRead(0);
+  // print the analog reading from the temperature sensor:
+  // set the cursor to column 5, line 0 (after "Raw:")
+  lcd.setCursor(5, 0);
+  lcd.print(reading);
+  
+  float voltage = (float)reading * 5.0 / 1024.0;
+  
+  char lcdString[20];
+  dtostrf(voltage,1,2, lcdString);
+  
+  // set the cursor to column 10, line 0)
+  lcd.setCursor(10, 0);
+  lcd.print(lcdString);
+
+  float DegC = (voltage - 0.5) * 100;
+  float DegF = DegC * 9.0 / 5.0 + 32.0;
+
+  // set the cursor to column 6, line 1)
+  lcd.setCursor(6, 1);
+  dtostrf(DegC,1,1, lcdString);
+  lcd.print(lcdString);
+
+  // set the cursor to column 11, line 1)
+  lcd.setCursor(11, 1);
+  dtostrf(DegF,1,1, lcdString);
+  lcd.print(lcdString);
+  
+  delay(500);
 }
 

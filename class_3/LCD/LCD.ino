@@ -9,13 +9,13 @@
  * LCD R/W pin to ground
  * 10K resistor:
  * ends to +5V and ground
- * wiper to LCD VO pin (pin 3)
+ * potentiometer to LCD VO pin (pin 3)
 
 Fun with Arduino by Rob Purser is licensed under a
 Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
-Based on a work at http://goo.gl/NNe35. 
-Copyright Rob Purser, 2013
+Based on a work at https://sites.google.com/site/funarduino/
+Copyright Rob Purser, 2013-2014
 
 */
 
@@ -29,13 +29,17 @@ void setup() {
   // set up the LCD's number of columns and rows: 
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("hello, world!");
-}
-
-void loop() {
+  lcd.print("Fun with Arduino");
   // set the cursor to column 0, line 1
   // (note: line 1 is the second row, since counting begins with 0):
   lcd.setCursor(0, 1);
+  lcd.print("Elapsed:");
+}
+
+void loop() {
+  // set the cursor to column 9, line 1 (right after the "Elapsed:" message, which is
+  // 8 characters long (plus a space).
+  lcd.setCursor(9, 1);
   // print the number of seconds since reset:
   lcd.print(millis()/1000);
 }
