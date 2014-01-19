@@ -53,17 +53,17 @@ void setup() {
 
 void loop() {
   // TASK 1: Read the temperature sensor on analog input pin 0
-  int reading = // INSERT YOUR CODE HERE
-  
+  int reading = analogRead(0);
+
   // TASK 2: Print the raw analog reading from the temperature sensor at column 5, line 0 (after "Raw:")
-  // INSERT YOUR CODE HERE
-  
+  lcd.setCursor(5, 0);
+  lcd.print(reading);
   
   float voltage = (float)reading * 5.0 / 1024.0;
   
   char voltageString[20];
   // dtostrf converts a floating point number to a string
-  // dtostrf(float, digLeftOfPeriod, digRightOfPeriod, pointerToString)
+  // dtostrf(float, digLeftOfPeriod, digRightOfPeriod, pointerToString
   dtostrf(voltage,1,2, voltageString);
   
   // print the voltage at  column 10, line 0)
@@ -74,10 +74,10 @@ void loop() {
   float DegF = 0;
 
   // TASK 3: Calculate the temperature in degrees C.  The conversion formula is (voltage - 0.5) * 100
-  DegC = // INSERT YOUR CODE HERE
+  DegC = (voltage - 0.5) * 100;
 
   // TASK 4: Calculate the temperature in degrees F.  The conversion is DegC * 9.0 / 5.0 + 32.0
-  DegF = // INSERT YOUR CODE HERE
+  DegF = DegC * 9.0 / 5.0 + 32.0;
 
   // print the celsius temp at column 6, line 1)
   char degCString[20];
