@@ -49,6 +49,9 @@ void setup() {
   // (note: line 1 is the second row, since counting begins with 0):
   lcd.setCursor(0, 1);
   lcd.print("Temp:");
+  
+  // Optional Debugging information
+  // Serial.begin(9600);
 }
 
 void loop() {
@@ -90,6 +93,13 @@ void loop() {
   lcd.setCursor(11, 1);
   dtostrf(DegF,1,1, degFString);
   lcd.print(degFString);
+  
+  // Optional Debugging Info
+  // Serial.print("Raw: "); Serial.print(reading);
+  // Serial.print(" ("); Serial.print(voltage);
+  // Serial.print("V) Temp: "); Serial.print(DegC);
+  // Serial.print("C, "); Serial.print(DegF);
+  // Serial.println("F");
   
   delay(500);
 }
