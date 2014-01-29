@@ -10,8 +10,10 @@ int signal1GreenPin = 11;
 int signal2RedPin = 10;
 int signal2YellowPin = 9;
 int signal2GreenPin = 8;
-int arrival1SensorPin = 7;
-int arrival2SensorPin = 6;
+
+int arrival1SensorPin = 6;
+int arrival2SensorPin = 7;
+
 
 void setup()
 {
@@ -26,51 +28,59 @@ void setup()
   
   pinMode(arrival1SensorPin,INPUT_PULLUP);
   pinMode(arrival2SensorPin,INPUT_PULLUP);
+
+  Serial.println("Red     Red -- waiting on arrival");
+  digitalWrite(signal1RedPin,HIGH);
+  digitalWrite(signal1RedPin,HIGH);  
 }
 
 void loop()
 {
-  Serial.println("Green  Red -- waiting on arrival sensor 1");
-  digitalWrite(signal1RedPin,LOW);
-  digitalWrite(signal1GreenPin,HIGH);
-
   // Wait for the arrival 1 sensor to go low
-  while(digitalRead(arrival1SensorPin) == HIGH)
+  if(digitalRead(arrival1SensorPin) == LOW)
   {
-    delay(100);
-  }
-  Serial.println("Arrival Sensor 1 Triggered");
-  
-  Serial.println("Yellow Red");
-  digitalWrite(signal1GreenPin,LOW);
-  digitalWrite(signal1YellowPin,HIGH);
-  delay(1000);
-  
-  Serial.println("Red    Red");
-  digitalWrite(signal1YellowPin,LOW);
-  digitalWrite(signal1RedPin,HIGH);
-  delay(500);
-  
-  Serial.println("Red    Green -- waiting on arrival sensor 2");
-  digitalWrite(signal2RedPin,LOW);
-  digitalWrite(signal2GreenPin,HIGH);
+    Serial.println("Arrival Sensor 1 Triggered");
 
-  // Wait for the arrival 2 sensor to go low
-  while(digitalRead(arrival2SensorPin) == HIGH)
-  {
-    delay(100);
-  }
-  
-  Serial.println("Arrival Sensor 2 Triggered");
+    Serial.println("Green   Red");
+    digitalWrite(signal1RedPin,LOW);  
+    digitalWrite(signal1GreenPin,HIGH);
     
-  Serial.println("Red    Yellow");
-  digitalWrite(signal2GreenPin,LOW);
-  digitalWrite(signal2YellowPin,HIGH);
-  delay(1000);
+    // Wait for the vehicle to pass
+    delay(5000);
   
-  Serial.println("Red    Red");
-  digitalWrite(signal2YellowPin,LOW);
-  digitalWrite(signal2RedPin,HIGH);
-  delay(500);
+    Serial.println("Yellow  Red");  
+    digitalWrite(signal1GreenPin,LOW);  
+    digitalWrite(signal1YellowPin,HIGH);
+    delay(500);
+    
+    Serial.println("Red     Red -- waiting on arrival");
+    digitalWrite(signal1YellowPin,LOW);
+    digitalWrite(signal1RedPin,HIGH);
+
+  }
+  else if(digitalRead(arrival2SensorPin) == LOW)
+  {
+    Serial.println("Arrival Sensor 2 Triggered");
+      
+    Serial.println("Red     Green");
+    digitalWrite(signal2RedPin,LOW);  
+    digitalWrite(signal2GreenPin,HIGH);
   
+    // Wait for the vehicle to pass  
+    delay(5000);
+  
+    Serial.println("Red     Yellow");  
+    digitalWrite(signal2GreenPin,LOW);  
+    digitalWrite(signal2YellowPin,HIGH);
+    delay(500);
+    
+    Serial.println("Red     Red -- waiting on arrival");
+    digitalWrite(signal2YellowPin,LOW);
+    digitalWrite(signal2RedPin,HIGH);
+  }
+  else
+  {
+     delay(100); 
+  }
 }
+
