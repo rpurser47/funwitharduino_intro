@@ -11,7 +11,6 @@ int signal2RedPin = 10;
 int signal2YellowPin = 9;
 int signal2GreenPin = 8;
 int arrivalSensorPin = 7;
-int delayTimingPin = 0;
 
 void setup()
 {
