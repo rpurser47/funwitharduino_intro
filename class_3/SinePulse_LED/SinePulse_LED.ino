@@ -2,9 +2,9 @@
 // Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 // http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 // Based on a work at http://goo.gl/NNe35. 
-// Copyright Rob Purser, 2013
+// Copyright Rob Purser, 2013-2014
 
-int pinToPulse = 11;
+int pinToPulse = 9;
 
 void setup()
 {

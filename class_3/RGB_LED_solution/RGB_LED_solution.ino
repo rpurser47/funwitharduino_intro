@@ -2,7 +2,7 @@
 // Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 // http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
 // Based on a work at https://sites.google.com/site/funarduino
-// Copyright Rob Purser, 2013
+// Copyright Rob Purser, 2013-2014
 
 int pinRed = 11;
 int pinGreen = 10;
@@ -10,6 +10,7 @@ int pinBlue = 9;
 
 void setup()
 {
+  // TODO: Add code to configure the red, green, and blue pins for analog output using the pinMode command
   pinMode(pinRed,OUTPUT);
   pinMode(pinGreen,OUTPUT);
   pinMode(pinBlue,OUTPUT);
@@ -17,44 +18,18 @@ void setup()
 
 void loop()
 {
-  // Common anode 
-  analogWrite(pinGreen,0);
-  analogWrite(pinBlue,0);
-  // Fade Red from off (0) to on (255)
-  for(int intensity = 0;intensity <= 255; intensity++)
+  for(int t = 0; t < 300; t++)
   {
-    analogWrite(pinRed,intensity);
-    delay(20);
+    // Yes, I used MATLAB to determine this...
+    int redIntensity = int((1 - cos(t * 0.0628)) * 127);
+    int greenIntensity = int((1 - cos(t * 0.0837)) * 127);
+    int blueIntensity = int((1 - cos(t * 0.2512)) * 127);
+
+    //TODO: Add code to write the intensity values out to the pins using the analogWrite command.
+    analogWrite(pinRed,redIntensity);
+    analogWrite(pinGreen,greenIntensity);
+    analogWrite(pinBlue,blueIntensity);
+
+    delay(50);
   }
-  // Fade Green from off (0) to on (255) to make yellow
-  for(int intensity = 0;intensity <= 255; intensity++)
-  {
-    analogWrite(pinGreen,intensity);
-    delay(20);
-  }
-  // Fade Blue from off (0) to on (255) to make white
-  for(int intensity = 0;intensity <= 255; intensity++)
-  {
-    analogWrite(pinBlue,intensity);
-    delay(20);
-  }
-  // Fade Green from on (255) to off (0) to make purple
-  for(int intensity = 255;intensity >= 0; intensity--)
-  {
-    analogWrite(pinGreen,intensity);
-    delay(20);
-  }
-  // Fade Red from on (255) to off (0) to make blue
-  for(int intensity = 255;intensity >= 0; intensity--)
-  {
-    analogWrite(pinRed,intensity);
-    delay(20);
-  }
-  // Fade Blue from on (255) to off (0) 
-  for(int intensity = 255;intensity >= 0; intensity--)
-  {
-    analogWrite(pinBlue,intensity);
-    delay(20);
-  }
-  
 }
