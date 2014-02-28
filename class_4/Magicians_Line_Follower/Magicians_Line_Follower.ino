@@ -8,8 +8,9 @@
 
 // darkLevel may need to change based on lighting conditions
 #define darkLevel 900
-#define seekSpeed 150
+#define seekSpeed 190
 #define forwardSpeed 200
+#define maxSpeed 255
 
 int pinRightForward = 9;
 int pinRightReverse = 10;
@@ -76,10 +77,10 @@ void myLineFollow() {
 void seek(boolean seekRight) {
   drive(seekSpeed);
   if (seekRight) {
-    rightBrake();
+    goRight();
   }
   else {
-    leftBrake();
+    goLeft();
   }
 }
 
