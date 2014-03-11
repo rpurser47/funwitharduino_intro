@@ -15,11 +15,13 @@ end
 for iLoop = 1:100
     flex = analogRead(a,0);
     
-    digitalWrite(a,lights(1),double(flex > 680));
-    digitalWrite(a,lights(2),double(flex > 708));
-    digitalWrite(a,lights(3),double(flex > 735));
-    digitalWrite(a,lights(4),double(flex > 762));
-    digitalWrite(a,lights(5),double(flex > 790));
+    angle = interp1([680 790],[0 1],flex);
+    
+    digitalWrite(a,lights(1),double(angle > .05));
+    digitalWrite(a,lights(2),double(angle > .25));
+    digitalWrite(a,lights(3),double(angle > .50));
+    digitalWrite(a,lights(4),double(angle > .75));
+    digitalWrite(a,lights(5),double(angle > .95));
     
     pause(.1);
 end
