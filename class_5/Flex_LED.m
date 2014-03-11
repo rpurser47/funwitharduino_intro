@@ -1,27 +1,40 @@
-% Close all figure windows
-close all;
-clear all;
+function Flex_LED
+    % Create an object to connect to Arduino board
+    % !!! You'll have to change this to your COM port
+    a = arduino('COM12');
 
-% Create an object to connect to Arduino board
-% !!! You'll have to change this to your COM port
-a = arduino('COM12');
+    redPin1 = 10;
+    redPin2 = 9;
+    yellowPin = 6;
+    greenPin1 = 5;
+    greenPin2 = 3;
 
-lights = [10 9 6 5 3];
+    % !!! You'll need to copy this calibration from running Flex_LED_Calibrate
+    % calibration = [ 694  820 ];
 
-for light = lights
-    pinMode(a,light,'output');
-end
+    for iLoop = 1:100
+        % !!! Add the code to read the raw value (using analogRead) into rawValue
+        angle = interp1(calibration,[0 90],rawValue,'linear','extrap');
 
-for iLoop = 1:100
-    flex = analogRead(a,0);
-    
-    angle = interp1([680 790],[0 1],flex);
-    
-    digitalWrite(a,lights(1),double(angle > .05));
-    digitalWrite(a,lights(2),double(angle > .25));
-    digitalWrite(a,lights(3),double(angle > .50));
-    digitalWrite(a,lights(4),double(angle > .75));
-    digitalWrite(a,lights(5),double(angle > .95));
-    
-    pause(.1);
+        % !!! Use the mapAngleToLED function (below) to calculate the LED
+        % values from the angle and write it (using analogWrite)
+        % redPin1: 0-10 degrees
+        % redPin2: 10-40 degrees
+        % yellowPin: 40-50 degrees
+        % greenPin1: 50-80 degrees
+        % greenPin2: 80-90 degrees
+
+        pause(.25);
+    end
+
+    function output = mapAngleToLED(angleRange, angle)
+        output = floor(interp1(angleRange,[0 255],angle,'linear','extrap'));
+        if output < 0
+            output = 0;
+        end
+        if output > 255
+            output = 255;
+        end
+       % disp(['Angle:' num2str(angle) ' Range: [' num2str(angleRange) '] Output:' num2str(output)]);
+    end
 end
