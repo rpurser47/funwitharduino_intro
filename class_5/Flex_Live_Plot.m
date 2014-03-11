@@ -3,10 +3,11 @@ close all;
 clear all;
 
 % Create an object to connect to Arduino board
-a = arduino('COM8');
+% !!! You'll have to change this to your COM port
+a = arduino('COM12');
 
 % Create figure window
-figureHandle = figure('Name','Force Sensor Readings');
+figureHandle = figure('Name','Flex Sensor Readings');
 
 % Create axes
 axesHandle = axes('Parent',figureHandle);
@@ -16,13 +17,13 @@ box(axesHandle,'on');
 hold(axesHandle,'all');
 
 % Create title
-title('Force Sensor Readings');
+title('Flex Sensor Readings');
 
 % Create xlabel
 xlabel('Time');
 
 % Create ylabel
-ylabel('FSR Readings');
+ylabel('Flex Readings');
 
 
 % Create initial plot

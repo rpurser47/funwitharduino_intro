@@ -1,26 +1,26 @@
-function varargout = Class_5_FSR_GUI(varargin)
-% CLASS_5_FSR_GUI MATLAB code for Class_5_FSR_GUI.fig
-%      CLASS_5_FSR_GUI, by itself, creates a new CLASS_5_FSR_GUI or raises the existing
+function varargout = Flex_Sensor_GUI(varargin)
+% Flex_Sensor_GUI MATLAB code for Flex_Sensor_GUI.fig
+%      Flex_Sensor_GUI, by itself, creates a new Flex_Sensor_GUI or raises the existing
 %      singleton*.
 %
-%      H = CLASS_5_FSR_GUI returns the handle to a new CLASS_5_FSR_GUI or the handle to
+%      H = Flex_Sensor_GUI returns the handle to a new Flex_Sensor_GUI or the handle to
 %      the existing singleton*.
 %
-%      CLASS_5_FSR_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in CLASS_5_FSR_GUI.M with the given input arguments.
+%      Flex_Sensor_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in Flex_Sensor_GUI.M with the given input arguments.
 %
-%      CLASS_5_FSR_GUI('Property','Value',...) creates a new CLASS_5_FSR_GUI or raises the
+%      Flex_Sensor_GUI('Property','Value',...) creates a new Flex_Sensor_GUI or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Class_5_FSR_GUI_OpeningFcn gets called.  An
+%      applied to the GUI before Flex_Sensor_GUI_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Class_5_FSR_GUI_OpeningFcn via varargin.
+%      stop.  All inputs are passed to Flex_Sensor_GUI_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help Class_5_FSR_GUI
+% Edit the above text to modify the response to help Flex_Sensor_GUI
 
 % Last Modified by GUIDE v2.5 15-Sep-2013 17:57:30
 
@@ -28,8 +28,8 @@ function varargout = Class_5_FSR_GUI(varargin)
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @Class_5_FSR_GUI_OpeningFcn, ...
-                   'gui_OutputFcn',  @Class_5_FSR_GUI_OutputFcn, ...
+                   'gui_OpeningFcn', @Flex_Sensor_GUI_OpeningFcn, ...
+                   'gui_OutputFcn',  @Flex_Sensor_GUI_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,15 +44,15 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before Class_5_FSR_GUI is made visible.
-function Class_5_FSR_GUI_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before Flex_Sensor_GUI is made visible.
+function Flex_Sensor_GUI_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Class_5_FSR_GUI (see VARARGIN)
+% varargin   command line arguments to Flex_Sensor_GUI (see VARARGIN)
 
-% Choose default command line output for Class_5_FSR_GUI
+% Choose default command line output for Flex_Sensor_GUI
 handles.output = hObject;
 
 % Clear all previously created objects
@@ -64,12 +64,12 @@ plot(handles.axesHandle,0,0,'MarkerFaceColor','auto','MarkerEdgeColor',[0 1 0],'
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes Class_5_FSR_GUI wait for user response (see UIRESUME)
+% UIWAIT makes Flex_Sensor_GUI wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = Class_5_FSR_GUI_OutputFcn(hObject, eventdata, handles) 
+function varargout = Flex_Sensor_GUI_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
