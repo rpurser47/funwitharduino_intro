@@ -3,7 +3,7 @@ Fun with Arduino intro class
 
 This intro course requires no electronics experience, and only minimal programming experience.  Uses the [SparkFun Inventor’s Kit](https://www.sparkfun.com/products/12001) plus a few extra things like the [Magician's Chassis](https://www.sparkfun.com/products/10825).
 
-Visit [the course website](https://sites.google.com/site/funarduino/intro-class) to learn more.
+Visit [the course website](http://www.funwitharduino.net/intro-class) to learn more.
 
 Overview
 --------
@@ -23,5 +23,5 @@ Licensing
 Fun with Arduino by Rob Purser is licensed under a
 Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
-Based on a work at https://sites.google.com/site/funarduino/
+Based on a work at http://www.funwitharduino.net
 Copyright Rob Purser, 2013-2014
