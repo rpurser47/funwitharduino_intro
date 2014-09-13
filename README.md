@@ -1,5 +1,5 @@
-Fun with Arduino intro class 
-============================
+Fun with Arduino Introductory Course 
+====================================
 
 This intro course requires no electronics experience, and only minimal programming experience.  Uses the [SparkFun Inventor’s Kit](https://www.sparkfun.com/products/12001) plus a few extra things like the [Magician's Chassis](https://www.sparkfun.com/products/10825).
 
@@ -13,10 +13,13 @@ Overview
 * **Class 4: Motors and making things move** - Focus is controlling motors and high power devices.  Build a little robot.
 * **Class 5: MATLAB and Arduino** - Learn about MATLAB support for arduino.
 
+Presentations
+-------------
+All the presentations associated with the course are available on [Google Drive] (https://drive.google.com/folderview?id=0Bzqt-W3ky85WMG04dDhQMHo2aEU&usp=sharing).
+
 Code and schematics
 -------------------
-This repository contains the code and schematics for the Fun with Arduino introductory course
-Currently, I am migrating the code and schematics from google drive as I prepare for our February 2014 course.
+This repository contains the code and schematics for the Fun with Arduino introductory course.
 
 Licensing
 ---------
